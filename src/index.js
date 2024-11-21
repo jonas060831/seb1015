@@ -1,11 +1,13 @@
 const express = require('express')
+const methodOverride = require("method-override")
+const morgan = require("morgan")
 const path = require("path")
 //database connection
 const connectToDatabase = require("./database")
 
-const routes = require('./routes')
 const app = express()
 
+const routes = require('./routes')
 
 
 //we need to change ejs /views to /src/views
@@ -15,8 +17,13 @@ app.set('view engine', 'ejs')
 
 app.use(express.static(path.join(__dirname, "public")))
 
-//middlewares here
-
+//middlewares
+// Middleware to parse URL-encoded data from forms
+app.use(express.urlencoded({ extended: false }))
+// Middleware for using HTTP verbs such as PUT or DELETE
+app.use(methodOverride("_method"))
+// Morgan for logging HTTP requests
+app.use(morgan('dev'))
 
 
 //routes
