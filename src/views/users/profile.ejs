@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile</title>
+</head>
+<body>
+    <h1>My Profile</h1>
+
+    <img src="<%= user.profile.picture %>" />
+
+    <h4>member since:</h4>
+    <%= user.stringCreatedAt %>
+
+    <h4>Credentials:</h4>
+    username: <%= user.username %> <br>
+    password: ••••••••
+
+    <h4>Profile</h4>
+    <form action="/users/edit/profile?_method=PUT" method="POST">
+        
+        <label for="firstName">First Name:</label>
+        <input type="text" name="firstName" value="<%= user.profile.firstName %>" />
+
+        <label for="lastName">Last Name:</label>
+        <input type="text" name="lastName" value="<%= user.profile.lastName %>" />
+
+        <label for="aboutMe">About Me:</label>
+        <textarea name="aboutMe"></textarea>
+
+        <input type="submit" value="Update"/>
+    </form>
+
+
+</body>
+</html>

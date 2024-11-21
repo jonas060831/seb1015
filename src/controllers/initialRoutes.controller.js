@@ -1,7 +1,7 @@
 const bcrypt = require("bcrypt");
 
 const models = require('../models')
-const { randomNumberGenerator } = require('../helpers')
+const { randomNumberGenerator, monthAndYearFromDateObject } = require('../helpers')
 
 const { User } = models
 
@@ -18,8 +18,6 @@ const index = async (req, res) => {
 
 const signUpPage = async (req, res) => {
 
-
-    console.log(req.body)
     res.render('auth/sign-up.ejs')
 }
 
@@ -48,7 +46,7 @@ const signUp = async (req, res) => {
 
     const userObject = {
         local: { username, password },
-        profile: { firstName, lastName, picture: imageUrl }
+        profile: { firstName, lastName, picture: imageUrl },
     }
 
     const user = await User.create(userObject)
@@ -80,18 +78,83 @@ const signIn = async (req, res) => {
     req.session.user = {
         username: existingUser.local.username,
         profile: existingUser.profile,
+        createdAt: existingUser.createdAt,
+        stringCreatedAt: monthAndYearFromDateObject(existingUser.createdAt),
         _id: existingUser._id
     }
 
     res.redirect("/")
 }
 
+
 const signOut = async(req, res ) => {
     req.session.destroy()
     res.redirect('/sign-in')
 }
+const loggedInUserProfilePage = async (req, res) => {
+
+    const user = req.session.user
+
+    //console.log(user)
+
+    if(!user) res.redirect("/sign-in")
+
+    res.render("users/profile.ejs", { user })
+}
+
+const updateLoggedInUserProfile = async (req, res) => {
+
+    //update the current logged in user
+    const { _id, profile } = req.session.user 
+    const { firstName, lastName, aboutMe } = req.body
 
 
+   try {
+    const updatedProfile = {
+        firstName: firstName,
+        lastName: lastName,
+        picture: profile.picture,
+        aboutMe: aboutMe
+    }
+
+    const updatedUser = await User.findByIdAndUpdate(
+        _id,
+        { $set: {'profile' : updatedProfile} },
+        { new: true }
+    )
+
+
+    req.session.user = {
+        username: updatedUser.local.username,
+        profile: updatedUser.profile,
+        createdAt: updatedUser.createdAt,
+        stringCreatedAt: monthAndYearFromDateObject(updatedUser.createdAt),
+        aboutMe: updatedUser.aboutMe,
+        _id: updatedUser._id
+    }
+
+    
+
+    return res.redirect(`/users/${req.session.user._id}`)
+
+   } catch (error) {
+        console.log(error)
+   }
+
+}
+
+const viewOtherProfilePage = async(req, res) => {
+
+    //get the req.query
+    const { userId } = req.params
+    //we know that there is a log in user for this page check if its the same logged in user or 
+    const user = await User.findById(userId)
+
+    console.log(user)
+    console.log(monthAndYearFromDateObject(user.createdAt))
+    //return that page
+    return res.render("users/view-other-profile.ejs", { user, monthAndYearFromDateObject })
+}
 
 module.exports = {
     index,
@@ -99,5 +162,8 @@ module.exports = {
     signInPage,
     signUp,
     signIn,
-    signOut
+    signOut,
+    loggedInUserProfilePage,
+    updateLoggedInUserProfile,
+    viewOtherProfilePage,
 }

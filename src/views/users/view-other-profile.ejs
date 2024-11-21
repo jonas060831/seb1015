@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Other Profile Page</title>
+</head>
+<body>
+
+    <!-- this data comes from the server -->
+    <h1>This is <%= `${user.profile.firstName} ${user.profile.lastName}'s` %> Page</h1>
+
+    <img src="<%= user.profile.picture %>" />
+
+    <h4>member since:</h4>
+    <%= monthAndYearFromDateObject(user.createdAt) %>
+
+    <h4>Profile</h4>
+
+    <%= user.profile.firstName %>
+    <%= user.profile.lastName %>
+
+    <h4>About Me:</h4>
+
+    <!-- here maybe show all activies of the user -->
+    <h4>Activities/Posts:</h4>
+    
+
+</body>
+</html>
