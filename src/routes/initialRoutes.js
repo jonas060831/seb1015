@@ -7,6 +7,7 @@ router.get('/sign-up', controllers.initialRoutes.signUpPage)
 router.get('/sign-in', controllers.initialRoutes.signInPage)
 router.post('/sign-up', controllers.initialRoutes.signUp)
 router.post('/sign-in', controllers.initialRoutes.signIn)
+router.get('/sign-out', controllers.initialRoutes.signOut)
 
 
 module.exports = router

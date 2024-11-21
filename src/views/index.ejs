@@ -7,7 +7,11 @@
     <link rel="stylesheet" href="./css/global.css">
 </head>
 <body>
+
+
     <img src="<%= user.profile.picture %>" alt="">
-    <h1>Welcome to the App <%= user.profile.firstName %></h1>
+    <h1>Welcome to the App <%= `${user.profile.firstName} ${user.profile.lastName}` %></h1>
+
+    <p><a href="/sign-out">Sign Out</a></p>
 </body>
 </html>

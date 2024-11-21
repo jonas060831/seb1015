@@ -86,6 +86,11 @@ const signIn = async (req, res) => {
     res.redirect("/")
 }
 
+const signOut = async(req, res ) => {
+    req.session.destroy()
+    res.redirect('/sign-in')
+}
+
 
 
 module.exports = {
@@ -93,5 +98,6 @@ module.exports = {
     signUpPage,
     signInPage,
     signUp,
-    signIn
+    signIn,
+    signOut
 }
