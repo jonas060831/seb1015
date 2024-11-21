@@ -19,7 +19,8 @@ const userSchema = new Schema({
     profile: {
         firstName: { type: String, required: true },
         lastName: { type: String, required: true },
-        picture: { type: String, required: true}
+        picture: { type: String, required: true},
+        aboutMe: { type: String, required: false }
     }
 },{ timestamps: true }) //shortcut for updatedAt and createdAt
 

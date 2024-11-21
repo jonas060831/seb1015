@@ -5,9 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
     <link rel="stylesheet" href="./css/global.css">
+    <script defer src="/javascript/global.js"></script>
 </head>
 <body>
 
+    <% if(message) { %>
+        <div class="warning-message"> <%= message %> </div>
+    <% } else { %>
+        ''
+    <% } %>
 
     <img src="<%= user.profile.picture %>" alt="">
     <h1>Welcome to the App <%= `${user.profile.firstName} ${user.profile.lastName}` %></h1>

@@ -1,6 +1,7 @@
 const express = require('express')
 const methodOverride = require("method-override")
 const morgan = require("morgan")
+const MongoStore = require("connect-mongo")
 const path = require("path")
 const session = require('express-session')
 
@@ -30,7 +31,10 @@ app.use(morgan('dev'))
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: true,
+    store: MongoStore.create({
+        mongoUrl: process.env.MONGODB_URI
+    })
 }))
 
 //routes

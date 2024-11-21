@@ -13,10 +13,17 @@ const index = async (req, res) => {
     //if there is no sign in user go and redirect to the login page
     if(!user) res.redirect('/sign-in')
 
-    res.render("index.ejs", { user })
+    const message  = req.query.message
+
+    res.render("index.ejs", { user, message })
 }
 
 const signUpPage = async (req, res) => {
+
+    const user = req.session.user
+
+    //if there is a signed in user in the session redirect them to the landing page /
+    if(user) return res.redirect("/?message=Sign Out first if you would like to create an account")
 
     res.render('auth/sign-up.ejs')
 }
@@ -49,12 +56,20 @@ const signUp = async (req, res) => {
         profile: { firstName, lastName, picture: imageUrl },
     }
 
-    const user = await User.create(userObject)
+    await User.create(userObject)
 
-    res.send(`Thanks for signing up ${user.local.username}`)
+    //now that we use Mongostore
+    req.session.save(() => {
+        res.redirect("/")
+    })
 }
 
 const signInPage = async (req, res) => {
+
+    const user = req.session.user
+
+    if(user) res.redirect('/?message=Are you trying to login a different account ? If so Sign out first')
+
     res.render('auth/sign-in.ejs')
 }
 
@@ -83,7 +98,10 @@ const signIn = async (req, res) => {
         _id: existingUser._id
     }
 
-    res.redirect("/")
+    //now that we use Mongostore
+    req.session.save(() => {
+        res.redirect("/")
+    })
 }
 
 

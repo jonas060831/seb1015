@@ -1,0 +1,18 @@
+/* css reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.warning-message {
+    background-color: orange;
+    color: white;
+    font-weight: 400;
+    padding: 2rem;
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
