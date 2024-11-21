@@ -15,7 +15,12 @@ const localSchema = new Schema({
 })
 
 const userSchema = new Schema({
-    local: localSchema
+    local: localSchema,
+    profile: {
+        firstName: { type: String, required: true },
+        lastName: { type: String, required: true },
+        picture: { type: String, required: true}
+    }
 },{ timestamps: true }) //shortcut for updatedAt and createdAt
 
 

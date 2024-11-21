@@ -2,6 +2,8 @@ const express = require('express')
 const methodOverride = require("method-override")
 const morgan = require("morgan")
 const path = require("path")
+const session = require('express-session')
+
 //database connection
 const connectToDatabase = require("./database")
 
@@ -24,7 +26,12 @@ app.use(express.urlencoded({ extended: false }))
 app.use(methodOverride("_method"))
 // Morgan for logging HTTP requests
 app.use(morgan('dev'))
-
+//session
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true
+}))
 
 //routes
 app.use('/', routes)
