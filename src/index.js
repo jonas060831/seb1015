@@ -6,13 +6,24 @@ const connectToDatabase = require("./database")
 const routes = require('./routes')
 const app = express()
 
+
+
+//we need to change ejs /views to /src/views
+const ejsViewsFolder = 'views' //this should match the folder name for all ejs files and folder
+app.set('views', path.join(`${__dirname}/${ejsViewsFolder}`))
+app.set('view engine', 'ejs')
+
+app.use(express.static(path.join(__dirname, "public")))
+
+//middlewares here
+
+
+
 //routes
 app.use('/', routes)
 
-//we need to change ejs /views to /src/views
-const ejsViewsFolder = 'views'
-app.set('views', path.join(`${__dirname}/${ejsViewsFolder}`))
-app.set('view engine', 'ejs')
+
+//use public folder for some resources
 
 const PORT = process.env.PORT || 3000;
 
