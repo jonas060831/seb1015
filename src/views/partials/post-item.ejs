@@ -1,14 +1,75 @@
+<script>
+    
+    //this functions execute every second
+    function updateTime() {
+        //seconds
+        // console.log('seconds', Math.floor(timeDifference / 1000))
+        // //hour
+        // console.log('hours',Math.floor(timeDifference / 3600000) )
+        //months
+
+        const spans = document.querySelectorAll('.post-header-container span');
+
+        //go to all spans
+        spans.forEach((span) => {
+            //test if all the spans will change
+            //span.style.color = 'red'
+            //now lets go get the value of each element
+            let date = span.getAttribute('data-timestamp')
+
+            //this also helps me https://stackoverflow.com/questions/3224834/get-difference-between-2-dates-in-javascript
+
+            //so from stack overflow above i can show milisecond, days
+            //i want to output 2s ago and once a minute is reach i will go 1m ago and then if it reach the hour then 1h ago and once month is reach ill go 2mos ago
+            //for a year then ill do 1y ago if it go further 1 year i will just simply output month and date only
+
+            const millisecond = Math.abs(new Date() - date) //new Date is the present object
+
+            //seconds
+            const seconds = millisecond / 1000
+            //minute
+            const minutes = seconds / 60
+            //hour
+            const hour = minutes / 60
+            //days
+            const day = hour / 24
+            //month
+            const month = hour / 730
+            //year
+            const year = month / 12
+
+
+            if(seconds < 60) span.innerText = `${Math.floor(seconds)}s ago`
+            else if(minutes < 60) span.innerText = `${Math.floor(minutes)}m ago`
+            else if(hour > 1 && hour < 24) span.innerText = `${Math.floor(hour)}h ago`
+            else if (day > 1 && month < 1) span.innerText = `${Math.floor(day)}d ago`
+            else if (month >= 1)  span.innerText = `${Math.floor(month)}mos ago`
+            else if (year > 1 && year < 4) span.innerText = `${Math.floor(year)}y ago`
+            else if (year >= 4) span.innerText = span.innerText = `${date.toLocaleString('en-US', {month: 'short', year: 'numeric' })}`
+            
+            span.style.visibility = 'visible'
+        })
+    }
+
+    //call setInterval
+    setInterval(updateTime, 1000) //call every second
+</script>
+
+
 <div class="post-item-container" id="<%= post._id %>">
 
-    <div class="post-header-container" style="margin-top: -3px;">
+    <div class="post-header-container" style="margin-top: -3px; display: flex;align-items: center;justify-content: space-between;">
         
-        <a href="/users/<%= post.postCreator._id %>">
-            <div style="display: flex; align-items: center;">
-                <img src="<%= post.postCreator.profile.picture%>" alt=""  style="width: 2rem;"/>
-                <%= `${post.postCreator.profile.firstName} ${post.postCreator.profile.lastName}` %>
-            </div>
-            
-        </a>
+        <div style="display: flex;align-items: center;justify-content: center;">
+            <a href="/users/<%= post.postCreator._id %>">
+                <div style="display: flex; align-items: center; margin-top: -0.8rem;padding-top: 0.6rem;">
+                    <img src="<%= post.postCreator.profile.picture%>" alt=""  style="width: 2rem;"/>
+                    <%= `${post.postCreator.profile.firstName} ${post.postCreator.profile.lastName}` %> &nbsp; 
+                    
+                </div>
+            </a>
+            <span style="visibility: hidden;" data-timestamp="<%= post.createdAt %>" ><%= post.createdAt %></span>
+        </div>
 
         <div>
             <!-- show the delete button match the loggedInUser id to post.postCreator_.id-->

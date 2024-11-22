@@ -33,7 +33,7 @@ const signUpPage = async (req, res) => {
 
     //if there is a signed in user in the session redirect them to the landing page /
     if(user) return res.redirect("/?message=Sign Out first if you would like to create an account")
-
+    //there is no user here
     res.render('auth/sign-up.ejs', { user: null })
 }
 
@@ -122,11 +122,11 @@ const signOut = async(req, res ) => {
 const loggedInUserProfilePage = async (req, res) => {
 
     const sessionUser = req.session.user
-    console.log(sessionUser)
+    //console.log(sessionUser)
     const user = await User.findById(sessionUser._id)
 
     user.stringCreatedAt = monthAndYearFromDateObject(user.createdAt)
-    console.log(user)
+    //console.log(user)
 
     if(!user) res.redirect("/sign-in")
 

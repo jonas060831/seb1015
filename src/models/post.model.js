@@ -10,7 +10,7 @@ const postSchema = new Schema({
     comments: { type: Array, required: false },
     agree: { type: Array, required: false },
     disagree: { type: Array, required: false }
-},{ timestamps: true }) //shortcut for updatedAt and createdAt
+},{ timestamps: true }) //shortcut for updatedAt and createdAt 
 
 const Post = model('Post', postSchema)
 
