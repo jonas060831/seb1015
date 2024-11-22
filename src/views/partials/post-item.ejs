@@ -15,7 +15,9 @@
             //test if all the spans will change
             //span.style.color = 'red'
             //now lets go get the value of each element
-            let date = span.getAttribute('data-timestamp')
+            //span.innerText will not work and will only update the front end when i refresh the page so i have to add a property inside the span called data-timestamp
+            //what it does is it will make data intact for javascript to be process
+            let date = new Date(span.getAttribute('data-timestamp'))
 
             //this also helps me https://stackoverflow.com/questions/3224834/get-difference-between-2-dates-in-javascript
 
