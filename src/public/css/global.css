@@ -32,6 +32,9 @@ a {
     color: var(--font-color);
 }
 
+a:hover {
+   color: rgb(55, 135, 248); 
+}
 
 .warning-message {
     background-color: orange;
@@ -67,6 +70,7 @@ a {
     justify-content: space-between;
     align-items: center;
     position: fixed;
+    box-shadow: 2px 3px 15px rgba(0, 179, 255, 0.369);
 }
 
 #logo {
@@ -94,7 +98,7 @@ a {
 
 #profile-link:hover {
     background-color: var(--bg);
-    border: 2px solid rgb(241, 70, 70);
+    border: 2px solid rgb(55, 135, 248); 
 }
 
 
@@ -104,7 +108,150 @@ a {
     margin-bottom: 5rem;
 }
 
+.three-row-container {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0rem 1rem 0rem 1rem;
+}
 
+.three-row-container div {
+    margin-top: 2rem;
+}
+
+.single-row-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-view-container {
+    background-color: var(--navbar-background-color);
+    border-radius: 5px 5px 0px 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 0rem;
+    width: 25rem;
+}
+
+
+.user-avatar-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+.user-avatar-container img {
+    width: 2rem;
+}
+
+.post-form-container {
+    padding: 1rem;
+    margin: 0px auto;
+    width: 55rem;
+    background-color: var(--navbar-background-color);
+    border-radius: 5px 5px 0px 0px;
+
+}
+
+.postMediaContainer {
+    display: flex;
+    margin-top: -5rem;
+    gap: 1rem;
+}
+
+.post-form-container textarea  {
+    width: 100%;
+    border-radius: 15px;
+    margin-top: 2rem;
+}
+
+/* icon radio custom start */
+
+#photo {
+    display: none !important;
+}
+
+#photoLabel {
+    opacity: 0.5;
+    padding: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#photoLabel:hover {
+    background-color: #333;
+}
+
+#photo:checked + #photoLabel {
+    opacity: 1;
+    background-color: var(--bg);
+}
+
+#video {
+    display: none !important;
+}
+
+#videoLabel {
+    opacity: 0.5;
+    padding: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#videoLabel:hover {
+    background-color: var(--bg);
+}
+
+#video:checked + #videoLabel {
+    opacity: 1;
+    background-color: var(--bg);
+}
+
+#code {
+    display: none !important;
+}
+
+#codeLabel {
+    opacity: 0.5;
+    padding: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#codeLabel:hover {
+    background-color: var(--bg);
+}
+
+#code:checked + #codeLabel {
+    opacity: 1;
+    background-color: var(--bg);
+}
+/* icon radio custom  end */
+
+.all-user-container ul {
+    padding: 0rem 1rem 0rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.all-user-container li{
+    background-color: var(--navbar-background-color);
+    width: 10rem;
+    padding: 0.2rem;
+    opacity: 0.3;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.all-user-container li:hover{
+    opacity: 1;
+}
+
+footer {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    height: 9rem;
+    background-color: var(--navbar-background-color);
+}
 
 /* USER PREFERENCE BASE ON DEVICE SETTING */
 
@@ -121,5 +268,42 @@ a {
         --bg: var(--light-bg);
         --font-color: var(--light-font-color);
         --navbar-background-color: var(--light-ui-bg)
+    }
+}
+
+
+
+/* device specifics */
+
+/* desktop only */
+@media (min-width: 821px) and (max-width: 5000px) {
+
+}
+
+/* tablet only */
+@media (min-width: 481px) and (max-width: 820px) {
+
+}
+
+/* mobile only */
+@media (min-width: 320px) and (max-width: 480px) {
+    .three-row-container {
+        display: block;
+        padding: 0;
+        width: 100%;
+    }
+    .user-avatar-container {
+        justify-content: space-between;
+    }
+    .user-view-container {
+        width: 95vw;
+        margin: 0px auto;
+    }
+    
+    .post-form-container {
+        width: 95vw;
+    }
+    .all-user-container {
+        display: none;
     }
 }

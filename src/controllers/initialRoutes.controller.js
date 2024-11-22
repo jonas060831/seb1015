@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 const models = require('../models')
 const { randomNumberGenerator, monthAndYearFromDateObject } = require('../helpers')
 
-const { User } = models
+const { User, Post } = models
 
 
 const index = async (req, res) => {
@@ -15,7 +15,11 @@ const index = async (req, res) => {
 
     const message  = req.query.message
 
-    res.render("index.ejs", { user, message })
+    //pass all users
+    const allUsers = await User.find()
+
+    const allPosts = await Post.find()
+    res.render("index.ejs", { message, allUsers, allPosts })
 }
 
 const signUpPage = async (req, res) => {

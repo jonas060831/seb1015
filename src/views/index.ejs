@@ -21,18 +21,29 @@
     <!-- <h1>Welcome to the App <%= `${user.profile.firstName} ${user.profile.lastName}` %></h1> -->
     
     <div class="wrapper">
-        <div class="3-row-container">
+        <div class="three-row-container">
 
             <div>
-                container 1
+                <%- include('./partials/user-view') %>
+            </div>
+    
+            <div class="single-row-container">
+                <%- include('./partials/post-form') %>
+                <br><br>
+                <hr>
+                <% if(allPosts.length > 0 ) { %>
+                    <% allPosts.forEach(post => { %>
+                        <li style="list-style-type: none;"> <%- include('./partials/post-item', { post }) %> </li>
+                   <% }) %>
+                <% } else { %>
+                    <br>
+                    <h4> No Post Yet!</h4>
+                <% } %>
+
             </div>
     
             <div>
-                container 2
-            </div>
-    
-            <div>
-                container 3
+                <%- include('./partials/allusers') %>
             </div>
     
         </div>

@@ -1,0 +1,41 @@
+<div class="post-form-container">
+    
+    <form action="/posts" method="POST" >
+        
+        <div>
+            <label for="postText">Let’s make this space come alive with your posts! Share what excites you.</label>
+            <textarea name="text" id="postText"></textarea>
+        </div>
+
+        <!-- https://stackoverflow.com/questions/5112995/how-to-replace-radio-buttons-with-images -->
+        <div class="postMediaContainer">
+            <div>
+
+                <input type="hidden" name="postCreator" value="<%= user._id %>">
+
+                <input type="radio" id="photo" name="content" value="photo">
+                <label id="photoLabel" for="photo">
+                    <i class="fa-solid fa-image"></i> Photo
+                </label>
+            </div>
+            <div>
+                <input type="radio" id="video" name="content" value="video">
+                <label id="videoLabel" for="video">
+                    <i class="fa-solid fa-video"></i> Video
+                </label>
+            </div>
+            <div>
+                <input type="radio" id="code" name="content" value="code">
+                <label id="codeLabel" for="code">
+                    <i class="fa-solid fa-code"></i> Code
+                </label>
+            </div>
+        </div>
+        <br/>
+        <hr>
+        <br/>
+        <input type="submit" value="Share" style="float: right;"/>
+    </form>
+    <br>
+    
+</div>

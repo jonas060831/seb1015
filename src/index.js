@@ -5,6 +5,9 @@ const MongoStore = require("connect-mongo")
 const path = require("path")
 const session = require('express-session')
 
+//middleware
+const passUserToView = require("./middleware/pass-user-to-view.js");
+
 //database connection
 const connectToDatabase = require("./database")
 
@@ -36,6 +39,10 @@ app.use(session({
         mongoUrl: process.env.MONGODB_URI
     })
 }))
+
+
+//make user available to all views
+app.use(passUserToView)
 
 //routes
 app.use('/', routes)

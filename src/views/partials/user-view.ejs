@@ -1,0 +1,26 @@
+<div class="user-view-container">
+    <!-- i wanted to show the user image and the name and once clicked will go to his profile view -->
+    <a href="/users/<%= user._id%>">
+        <div class="user-avatar-container">
+            <div style="display: flex; flex-direction: row; align-items: center;margin-top: 3px;">
+                <img src="<%= user.profile.picture %>" alt="">
+                <p><%= `${user.profile.firstName} ${user.profile.lastName}` %></p>
+            </div>
+        </div>
+    </a>
+    <hr>
+    <div style="display: flex;align-items: flex-start;justify-content: center;padding: 1rem;flex-direction: column;margin-top: 0px;">
+        
+        <% if(user.profile.aboutMe) { %>
+            <a href="/profile"><h5><i class="fa-solid fa-pen"></i> About Me:</h5></a>
+
+            <%= user.profile.aboutMe %>
+
+        <% } else { %>
+            <a href="/profile" style="margin: 0px auto"><i class="fa-solid fa-pen"> </i> Edit Details</a>
+        <% } %>
+        
+        
+
+    </div>
+</div>

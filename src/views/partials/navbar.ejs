@@ -1,8 +1,11 @@
 <nav class="navbar">
     
-    <div>
+    <div style="display: flex; align-items: center;gap: 1rem;">
         <a href="/"><img src="/seb1015_logo.png" alt="" id="logo"/></a>
+        <a href="/"><h4>seb1015.com</h4></a>
     </div>
+
+    
 
     <div style="display: flex;flex-direction: row-reverse; gap: 1rem;align-items: center; justify-content: center;">
 
@@ -12,6 +15,8 @@
                 <img  src="<%= user.profile.picture %>" alt="">
             </a>        
         </div>
+
+        
         <a href="/developers/suggestions">be a contributor</a>
         <% } else { %>
     

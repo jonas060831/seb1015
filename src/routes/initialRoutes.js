@@ -5,6 +5,7 @@ const controllers = require("../controllers")
 
 const isSignedIn = require("../middleware/is-signed-in.js")
 
+
 router.get('/', isSignedIn, controllers.initialRoutes.index)
 router.get('/sign-up', controllers.initialRoutes.signUpPage)
 router.get('/sign-in', controllers.initialRoutes.signInPage)

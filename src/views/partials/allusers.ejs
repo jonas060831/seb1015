@@ -1,0 +1,11 @@
+<div class="all-user-container">
+    <h5 style="text-align: center;margin:1rem">Users: <%= allUsers.length %></h5>
+    <ul>
+        <% allUsers.forEach(user => { %>
+            <a href="/users/<%= user._id %>">
+
+                <li style="list-style-type: none;"><%=  `${user.profile.firstName} ${user.profile.lastName}` %></li>
+            </a>
+        <% }) %>
+    </ul>
+</div>
