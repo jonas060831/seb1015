@@ -18,7 +18,12 @@ const index = async (req, res) => {
     //pass all users
     const allUsers = await User.find()
 
+
+    
     const allPosts = await Post.find()
+    .populate("postCreator") //populate the postCreator with the details of the user that posted it 
+    .sort({ "createdAt": -1 }) //sort it descending order so the new one will go to the top
+
     res.render("index.ejs", { message, allUsers, allPosts })
 }
 

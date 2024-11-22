@@ -1,3 +1,37 @@
-<div class="post-item-container">
-    <%= post.text %>
+<div class="post-item-container" id="<%= post._id %>">
+
+    <div class="post-header-container" style="margin-top: -3px;">
+        
+        <a href="/users/<%= post.postCreator._id %>">
+            <div style="display: flex; align-items: center;">
+                <img src="<%= post.postCreator.profile.picture%>" alt=""  style="width: 2rem;"/>
+                <%= `${post.postCreator.profile.firstName} ${post.postCreator.profile.lastName}` %>
+            </div>
+            
+        </a>
+
+        <div>
+            <!-- show the delete button match the loggedInUser id to post.postCreator_.id-->
+            <!-- .toString() in post.postCreator._id is necessary to covert that object id back to string -->
+            <% if(loggedInUser._id === post.postCreator._id.toString()) { %>
+                <form action="/posts/<%= post._id%>?_method=DELETE" method="POST">
+                    <input type="submit" value="delete" />
+                </form>
+            <% } else { %>
+                
+            <% } %>
+
+        </div>
+    </div>
+
+    <h1><%= post.text %></h1>
+
+    <hr>
+    <br>
+    <form class="comment-form-container" action="/comments/<%= post._id %>">
+        
+        <input type="hidden" name="commenterId" id="commenterId" value="<%= loggedInUser._id%>"/>
+        <input type="text" name="commentText"/>
+        <input type="button" value="Add Comment">
+    </form>
 </div>

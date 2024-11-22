@@ -244,6 +244,21 @@ a:hover {
     opacity: 1;
 }
 
+.post-item-container {
+    padding: 1rem;
+    border-radius: 5px;
+    width: 55rem;
+    background-color: var(--navbar-background-color);
+    
+}
+
+.comment-form-container {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+
 footer {
     display: flex;
     gap: 2rem;
@@ -303,7 +318,14 @@ footer {
     .post-form-container {
         width: 95vw;
     }
+    
     .all-user-container {
         display: none;
     }
+    
+    .post-item-container {
+        width: 95vw;
+        margin: 0px auto;
+    }
+    
 }

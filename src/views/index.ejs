@@ -33,7 +33,7 @@
                 <hr>
                 <% if(allPosts.length > 0 ) { %>
                     <% allPosts.forEach(post => { %>
-                        <li style="list-style-type: none;"> <%- include('./partials/post-item', { post }) %> </li>
+                        <li style="list-style-type: none;"> <%- include('./partials/post-item', { post, loggedInUser: user }) %> </li>
                    <% }) %>
                 <% } else { %>
                     <br>
