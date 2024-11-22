@@ -2,7 +2,10 @@ const express = require('express')
 const router = express.Router()
 const controllers = require("../controllers")
 
-router.get('/', controllers.initialRoutes.index)
+
+const isSignedIn = require("../middleware/is-signed-in.js")
+
+router.get('/', isSignedIn, controllers.initialRoutes.index)
 router.get('/sign-up', controllers.initialRoutes.signUpPage)
 router.get('/sign-in', controllers.initialRoutes.signInPage)
 router.post('/sign-up', controllers.initialRoutes.signUp)

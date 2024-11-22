@@ -3,34 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Other Profile Page</title>
-    <link rel="stylesheet" href="./css/global.css">
+    <title><%= `${otherPersonProfile.profile.firstName} ${otherPersonProfile.profile.lastName}` %></title>
+    <script src="https://kit.fontawesome.com/5aa5c57aae.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/global.css">
     <script defer src="/javascript/global.js"></script>
 </head>
 <body>
+    <%- include('../partials/navbar') %>
+    <div class="wrapper">
 
-    <!-- this data comes from the server -->
-    <h1>This is <%= `${user.profile.firstName} ${user.profile.lastName}'s` %> Page</h1>
+        <!-- this data comes from the server -->
+        <h1>This is <%= `${otherPersonProfile.profile.firstName} ${otherPersonProfile.profile.lastName}'s` %> Page</h1>
 
-    <img src="<%= user.profile.picture %>" />
+        <img src="<%= otherPersonProfile.profile.picture %>" />
 
-    <h4>member since:</h4>
-    <%= monthAndYearFromDateObject(user.createdAt) %>
+        <h4>member since:</h4>
+        <%= monthAndYearFromDateObject(otherPersonProfile.createdAt) %>
 
-    <h4>Profile</h4>
+        <h4>Profile</h4>
 
-    <%= user.profile.firstName %>
-    <%= user.profile.lastName %>
+        <%= otherPersonProfile.profile.firstName %>
+        <%= otherPersonProfile.profile.lastName %>
 
 
-    <!-- https://developer.mozilla.org/en-US/docs/Web/CSS/white-space -->
-    <h4>About Me:</h4>
-    <p style="white-space: pre-line;">
-        <%= user.profile.aboutMe %>
-    </p>
-    <!-- here maybe show all activies of the user -->
-    <h4>Activities/Posts:</h4>
+        <!-- https://developer.mozilla.org/en-US/docs/Web/CSS/white-space -->
+        <h4>About Me:</h4>
+        <p style="white-space: pre-line;">
+            <%= otherPersonProfile.profile.aboutMe %>
+        </p>
+        <!-- here maybe show all activies of the user -->
+        <h4>Activities/Posts:</h4>
+
+    </div>
+
+    
     
 
 </body>
+<%- include('../partials/footer') %>
 </html>

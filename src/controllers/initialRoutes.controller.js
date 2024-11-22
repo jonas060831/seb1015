@@ -25,7 +25,7 @@ const signUpPage = async (req, res) => {
     //if there is a signed in user in the session redirect them to the landing page /
     if(user) return res.redirect("/?message=Sign Out first if you would like to create an account")
 
-    res.render('auth/sign-up.ejs')
+    res.render('auth/sign-up.ejs', { user: null })
 }
 
 const signUp = async (req, res) => {
@@ -69,8 +69,9 @@ const signInPage = async (req, res) => {
     const user = req.session.user
 
     if(user) res.redirect('/?message=Are you trying to login a different account ? If so Sign out first')
-
-    res.render('auth/sign-in.ejs')
+    
+    //we know that there is no user so its safe to pass null
+    res.render('auth/sign-in.ejs', { user: null, error: req.query.error })
 }
 
 const signIn = async (req, res) => {
@@ -81,14 +82,14 @@ const signIn = async (req, res) => {
     .select('+local.password')
     .exec()
 
-    if(!existingUser) return res.send("Login failed. Please try again")
+    if(!existingUser) return res.redirect("?error=Cannot Verify")
     
     //for some reason you cannot call .notation inside bcrypt.compareSync so i have to get the value out first and compare
 
     const validPassword =  bcrypt.compareSync(password, existingUser.local.password)
 
     //invalid password
-    if(!validPassword) return res.send("Login failed. Please try again.")
+    if(!validPassword) return res.redirect("?error=Invalid Password")
 
     req.session.user = {
         username: existingUser.local.username,
@@ -111,9 +112,12 @@ const signOut = async(req, res ) => {
 }
 const loggedInUserProfilePage = async (req, res) => {
 
-    const user = req.session.user
+    const sessionUser = req.session.user
+    console.log(sessionUser)
+    const user = await User.findById(sessionUser._id)
 
-    //console.log(user)
+    user.stringCreatedAt = monthAndYearFromDateObject(user.createdAt)
+    console.log(user)
 
     if(!user) res.redirect("/sign-in")
 
@@ -165,13 +169,14 @@ const viewOtherProfilePage = async(req, res) => {
 
     //get the req.query
     const { userId } = req.params
-    //we know that there is a log in user for this page check if its the same logged in user or 
-    const user = await User.findById(userId)
 
-    console.log(user)
-    console.log(monthAndYearFromDateObject(user.createdAt))
+    //we know that there is a log in user for this page check if its the same logged in user or 
+    const user =  req.session.user
+
+    const otherPersonProfile = await User.findById(userId)
+    console.log(monthAndYearFromDateObject(otherPersonProfile.createdAt))
     //return that page
-    return res.render("users/view-other-profile.ejs", { user, monthAndYearFromDateObject })
+    return res.render("users/view-other-profile.ejs", { user, monthAndYearFromDateObject, otherPersonProfile })
 }
 
 module.exports = {

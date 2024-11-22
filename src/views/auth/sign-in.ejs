@@ -4,20 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In Page</title>
+    <script src="https://kit.fontawesome.com/5aa5c57aae.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./css/global.css">
     <script defer src="/javascript/global.js"></script>
 </head>
 <body>
-    <h1>Sign In Page</h1>
-    <form action="/sign-in" method="POST">
-        <label for="username">Email:</label>
-        <input type="text" name="username" id="username"/>
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password" />
 
-        <input type="submit" value="Sign In" />
-    </form>
+    <% if(error) { %>
+        <div class="danger-message"> <%= error %> </div>
+    <% } else { %>
+    <% } %>
 
-    <p><a href="/sign-up">Sign up</a></p>
+    <%- include('../partials/navbar') %>
+    
+    <div class="wrapper">
+
+
+        <div>
+            <h1>Sign In Page</h1>
+            <form action="/sign-in" method="POST">
+                <label for="username">Email:</label>
+                <input type="text" name="username" id="username"/>
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" />
+        
+                <input type="submit" value="Sign In" />
+            </form>
+        
+            <p><a href="/sign-up">Sign up</a></p>
+        </div>
+        
+    </div>
+    
 </body>
+<%- include('../partials/footer') %>
 </html>

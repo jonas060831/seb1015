@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up Page</title>
+    <script src="https://kit.fontawesome.com/5aa5c57aae.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./css/global.css">
     <script defer src="/javascript/global.js"></script>
 </head>
 <body>
-    <h1>Create a new account!</h1>
+    <%- include('../partials/navbar') %>
+
+    <div class="wrapper">
+        <h1>Create a new account!</h1>
 
     <form action="/sign-up" method="POST" id="signup-form">
         <div>
@@ -30,5 +34,7 @@
         
         <input type="submit" value="Sign up" />
     </form>
+    </div>
 </body>
+<%- include('../partials/footer') %>
 </html>

@@ -4,22 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
+    <script src="https://kit.fontawesome.com/5aa5c57aae.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./css/global.css">
     <script defer src="/javascript/global.js"></script>
 </head>
 <body>
-
     <% if(message) { %>
         <div class="warning-message"> <%= message %> </div>
     <% } else { %>
     <% } %>
 
-    <img src="<%= user.profile.picture %>" alt="">
-    <h1>Welcome to the App <%= `${user.profile.firstName} ${user.profile.lastName}` %></h1>
+    <%- include('./partials/navbar') %>
 
-    <p>
-        <a href="/sign-out">Sign Out</a>
-        <a href="/profile">My Profile</a>
-    </p>
+    <!-- <img src="<%= user.profile.picture %>" alt=""> -->
+    
+    <!-- <h1>Welcome to the App <%= `${user.profile.firstName} ${user.profile.lastName}` %></h1> -->
+    
+    <div class="wrapper">
+        <div class="3-row-container">
+
+            <div>
+                container 1
+            </div>
+    
+            <div>
+                container 2
+            </div>
+    
+            <div>
+                container 3
+            </div>
+    
+        </div>
+    </div>
+    
+
+
 </body>
+<%- include('./partials/footer') %>
 </html>
