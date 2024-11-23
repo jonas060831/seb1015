@@ -7,6 +7,7 @@ const postSchema = new Schema({
     text: { type: String, required: false },
     content: { type: String, enum: ['photo', 'video', 'code', 'text'],required: false, default: 'text' },
     postCreator: { type: Schema.Types.ObjectId, ref: "User", required: true },
+    photoUrl: { type: String, required: false },
     comments: [ 
         { 
             commentText: { type: String, required: true },

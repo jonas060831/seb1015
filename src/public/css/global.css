@@ -269,6 +269,49 @@ a:hover {
 }
 
 
+input[type=text]  {
+    background: none;
+    border: 1px solid var(--font-color);
+    padding: 0.5rem;
+    font-size: 16px;
+    color: var(--font-color);
+    border-radius: 100vw;
+}
+
+input[type=password]  {
+    background: none;
+    border: 1px solid var(--font-color);
+    padding: 0.5rem;
+    font-size: 16px;
+    color: var(--font-color);
+    border-radius: 100vw;
+}
+
+input[type=submit] {
+    background: none;
+    color: var(--font-color);
+    padding: 0.5rem;
+    cursor: pointer;
+    border: none;
+}
+
+input[type=submit]:hover {
+    background-color: var(--bg);
+    opacity: 0.8;
+    border-radius: 10px;
+}
+
+/* https://www.w3schools.com/howto/howto_css_disable_resize_textarea.asp */
+textarea {
+    background: none;
+    resize: none;
+    border: 1px solid var(--font-color);
+    padding: 1rem;
+    font-size: 16px;
+    color: var(--font-color);
+    border-radius: 100vw;
+}
+
 footer {
     display: flex;
     gap: 2rem;

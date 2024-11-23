@@ -1,36 +1,20 @@
 <script>
-    
     //this functions execute every second
     function updateTime() {
-        //seconds
-        // console.log('seconds', Math.floor(timeDifference / 1000))
-        // //hour
-        // console.log('hours',Math.floor(timeDifference / 3600000) )
-        //months
-        
 
         const postSpans = document.querySelectorAll('.post-header-container span');
         const commentSpans = document.querySelectorAll('.commentContainer span')
         
         const arrOfSpans = [postSpans, commentSpans]
         for (let index = 0; index < arrOfSpans.length; index++) {
-            const element = arrOfSpans[index];
+            const spans = arrOfSpans[index];
 
             //go to all spans
-            element.forEach((span) => {
-                //test if all the spans will change
-                //span.style.color = 'red'
-                //now lets go get the value of each element
-                //span.innerText will not work and will only update the front end when i refresh the page so i have to add a property inside the span called data-timestamp
-                //what it does is it will make data intact for javascript to be process
+            spans.forEach((span) => {
+
                 let date = new Date(span.getAttribute('created-at-timestamp')) 
 
                 //this also helps me https://stackoverflow.com/questions/3224834/get-difference-between-2-dates-in-javascript
-
-                //so from stack overflow above i can show milisecond, days
-                //i want to output 2s ago and once a minute is reach i will go 1m ago and then if it reach the hour then 1h ago and once month is reach ill go 2mos ago
-                //for a year then ill do 1y ago if it go further 1 year i will just simply output month and date only
-
                 const millisecond = Math.abs(new Date() - date) //new Date is the present object
 
                 //seconds
@@ -57,11 +41,8 @@
                 
                 span.style.visibility = 'visible'
             })
-            
         }
-        
     }
-
     setInterval(updateTime,500) //execute every half a second
 </script>
 
@@ -96,7 +77,13 @@
         </div>
     </div>
 
-    <h1><%= post.text %></h1>
+    <h1 style="white-space: pre-wrap;"><%= post.text %></h1>
+
+    <% if(post.content === 'photo') { %>
+
+        <img src="<%= post.photoUrl %>" alt="" width="100%"/>
+
+    <% } %>
 
     <hr>
 
@@ -141,7 +128,7 @@
     <br>
     <form class="comment-form-container" action="/comments/<%= post._id %>" method="POST">
         
-        <input type="text" name="commentText"/>
+        <input type="text" name="commentText" required/>
         <input type="submit" value="Add Comment">
     </form>
 </div>

@@ -1,6 +1,6 @@
 <div class="post-form-container">
     
-    <form action="/posts" method="POST" >
+    <form action="/posts" method="POST">
         
         <div>
             <label for="postText">Let’s make this space come alive with your posts! Share what excites you.</label>
@@ -10,26 +10,29 @@
         <!-- https://stackoverflow.com/questions/5112995/how-to-replace-radio-buttons-with-images -->
         <div class="postMediaContainer">
             <div>
-
                 <input type="hidden" name="postCreator" value="<%= user._id %>">
-
-                <input type="radio" id="photo" name="content" value="photo">
+                <input id="photoUrlToUpload" type="hidden" name="photoUrl" value=""/>
+                <input class="media-process-input" type="radio" id="photo" name="content" value="photo">
                 <label id="photoLabel" for="photo">
                     <i class="fa-solid fa-image"></i> Photo
                 </label>
             </div>
+            <div style="display: none;"><input class="media-process-input" type="radio" id="text" name="content" value="text" checked></div>
             <div>
-                <input type="radio" id="video" name="content" value="video">
+                <input class="media-process-input" type="radio" id="video" name="content" value="video">
                 <label id="videoLabel" for="video">
                     <i class="fa-solid fa-video"></i> Video
                 </label>
             </div>
             <div>
-                <input type="radio" id="code" name="content" value="code">
+                <input class="media-process-input" type="radio" id="code" name="content" value="code">
                 <label id="codeLabel" for="code">
                     <i class="fa-solid fa-code"></i> Code
                 </label>
             </div>
+        </div>
+        <div class="media-upload-container">
+            <div class="uploaded-photo-container"></div>
         </div>
         <br/>
         <hr>
