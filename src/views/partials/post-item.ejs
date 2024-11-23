@@ -53,9 +53,9 @@
         })
     }
 
-    //call setInterval
-    setInterval(updateTime, 1000) //call every second
+    setInterval(updateTime, 1000) //call every second    
 </script>
+
 
 
 <div class="post-item-container" id="<%= post._id %>">
@@ -65,7 +65,7 @@
         <div style="display: flex;align-items: center;justify-content: center;">
             <a href="/users/<%= post.postCreator._id %>">
                 <div style="display: flex; align-items: center; margin-top: -0.8rem;padding-top: 0.6rem;">
-                    <img src="<%= post.postCreator.profile.picture%>" alt=""  style="width: 2rem;"/>
+                    <img src="<%= post.postCreator.profile.picture%>" alt=""  style="width: 5rem;"/>
                     <%= `${post.postCreator.profile.firstName} ${post.postCreator.profile.lastName}` %> &nbsp; 
                     
                 </div>
@@ -90,11 +90,49 @@
     <h1><%= post.text %></h1>
 
     <hr>
+
+    <% if (post.comments.length === 0) { %>
+        <!-- <p>no comment yet</p> -->
+    <% } else { %>
+        <!-- show all comments -->
+        <% post.comments.forEach( (comment) => { %>
+
+            <div class="commentContainer" style="display: flex;align-items: center;gap: 0.3rem;justify-content: space-between;">
+
+
+                 <div style="display: flex;align-items: center; justify-content: center;gap: 0.3rem;">
+                    
+                    <a class="picture-and-name-comment-indicator" href="/users/<%= comment.commenterId._id %>" style="display: flex;align-items: center;">
+                        <img src="<%= comment.commenterId.profile.picture %>" alt="" style="width: 2rem" />
+                        <span style="font-weight: 800;color: rgb(55, 135, 248);"><%= `${comment.commenterId.profile.firstName} ${comment.commenterId.profile.lastName}` %></span>
+                    </a>
+
+                    :
+                    
+                    &nbsp;&nbsp;<%= comment.commentText %>
+
+
+                 </div>
+
+
+                 
+                <div>
+                    <form action="/comments/<%= comment._id %>/delete/<%= post._id %>?_method=DELETE" method="POST">
+                        <% if(loggedInUser._id.toString() === comment.commenterId._id.toString()) { %>
+                            <button class="delete-comment-button" type="submit"><i class="fa-solid fa-xmark"></i></button>
+                        <% } %>
+                    </form>
+                </div>
+
+            </div>
+
+        <% }) %>
+
+    <% } %>
     <br>
-    <form class="comment-form-container" action="/comments/<%= post._id %>">
+    <form class="comment-form-container" action="/comments/<%= post._id %>" method="POST">
         
-        <input type="hidden" name="commenterId" id="commenterId" value="<%= loggedInUser._id%>"/>
         <input type="text" name="commentText"/>
-        <input type="button" value="Add Comment">
+        <input type="submit" value="Add Comment">
     </form>
 </div>

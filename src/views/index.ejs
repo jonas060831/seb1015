@@ -15,12 +15,6 @@
     <% } %>
 
     <%- include('./partials/navbar') %>
-
-    <!-- <img src="<%= user.profile.picture %>" alt=""> -->
-    
-    <!-- <h1>Welcome to the App <%= `${user.profile.firstName} ${user.profile.lastName}` %></h1> -->
-
-   
     
     <div class="wrapper">
         <div class="three-row-container">
@@ -33,13 +27,19 @@
                 <%- include('./partials/post-form') %>
                 <br><br>
                 <hr>
-                <% if(allPosts.length > 0 ) { %>
-                    <% allPosts.forEach(post => { %>
-                        <li style="list-style-type: none;"> <%- include('./partials/post-item', { post, loggedInUser: user }) %> </li>
-                   <% }) %>
-                <% } else { %>
+                <% if(allPosts.length === 0 ) { %>
+
                     <br>
                     <h4> No Post Yet!</h4>
+                <% } else { %>
+                    
+
+                    <% allPosts.forEach(post => { %>
+                        <li style="list-style-type: none;">
+                            <%- include('./partials/post-item', { post: post, loggedInUser: user }) %>
+                        </li>
+                   <% }) %>
+
                     
                 <% } %>
 

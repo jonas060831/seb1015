@@ -258,6 +258,16 @@ a:hover {
     gap: 0.2rem;
 }
 
+.delete-comment-button {
+    background: none;
+    color: var(--font-color);
+    border: none;
+    cursor: pointer;
+}
+.delete-comment-button:hover {
+    opacity: 0.8;
+}
+
 
 footer {
     display: flex;
@@ -327,5 +337,7 @@ footer {
         width: 95vw;
         margin: 0px auto;
     }
-    
+    .picture-and-name-comment {
+       background-color: red;
+    } 
 }

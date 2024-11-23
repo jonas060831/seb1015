@@ -7,7 +7,13 @@ const postSchema = new Schema({
     text: { type: String, required: false },
     content: { type: String, enum: ['photo', 'video', 'code', 'text'],required: false, default: 'text' },
     postCreator: { type: Schema.Types.ObjectId, ref: "User", required: true },
-    comments: { type: Array, required: false },
+    comments: [ 
+        { 
+            commentText: { type: String, required: true },
+            commenterId: { type: Schema.Types.ObjectId, ref: "User", required: true },
+            createdAt: { type: Date, required: true }
+        }
+     ],
     agree: { type: Array, required: false },
     disagree: { type: Array, required: false }
 },{ timestamps: true }) //shortcut for updatedAt and createdAt 
