@@ -7,7 +7,8 @@ const upload = multer()
 
 router.post('/', controllers.postRoutes.createPost)
 router.delete('/:postId', controllers.postRoutes.deletePost)
-router.post('/a-single-photo',upload.single('photo'), controllers.postRoutes.postASinglePhoto);
+router.post('/a-single-photo',upload.single('photo'), controllers.postRoutes.postASinglePhoto)
+router.post('/a-single-video', upload.single('video'), controllers.postRoutes.postASingleVideo)
 
 
 

@@ -312,6 +312,15 @@ textarea {
     border-radius: 100vw;
 }
 
+
+#input-file-photo {
+    background-color: red;
+}
+
+#input-file-video {
+    background-color: blue;
+}
+
 footer {
     display: flex;
     gap: 2rem;

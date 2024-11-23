@@ -9,15 +9,31 @@
 
         <!-- https://stackoverflow.com/questions/5112995/how-to-replace-radio-buttons-with-images -->
         <div class="postMediaContainer">
-            <div>
+            
+            
+            <div style="display: none;">
+                <!-- radio input input -->
+                <input class="media-process-input" type="radio" id="text" name="content" value="text" checked>
+                
+
+                <!-- hidden text input -->
+
                 <input type="hidden" name="postCreator" value="<%= user._id %>">
-                <input id="photoUrlToUpload" type="hidden" name="photoUrl" value=""/>
+
+                <input type="hidden" id="photoUrlToUpload" name="photoUrl" value=""/>
+                <input type="hidden" id="videoUrlToUpload" name="videoUrl" value="">
+
+            </div>
+            
+            
+            <div>
+                
                 <input class="media-process-input" type="radio" id="photo" name="content" value="photo">
                 <label id="photoLabel" for="photo">
                     <i class="fa-solid fa-image"></i> Photo
                 </label>
             </div>
-            <div style="display: none;"><input class="media-process-input" type="radio" id="text" name="content" value="text" checked></div>
+
             <div>
                 <input class="media-process-input" type="radio" id="video" name="content" value="video">
                 <label id="videoLabel" for="video">
@@ -31,9 +47,15 @@
                 </label>
             </div>
         </div>
+
+        <!-- the input files created in javascript programatically in global.js will show here -->
         <div class="media-upload-container">
-            <div class="uploaded-photo-container"></div>
+             
+            <div class="uploaded-media-container">
+                <!-- file thumbnail will show inside here -->
+            </div>
         </div>
+
         <br/>
         <hr>
         <br/>

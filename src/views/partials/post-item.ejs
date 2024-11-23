@@ -81,7 +81,15 @@
 
     <% if(post.content === 'photo') { %>
 
-        <img src="<%= post.photoUrl %>" alt="" width="100%"/>
+        <img src="<%= post.photoUrl %>" alt="" width="100%" style="border-radius: 15px;"/>
+
+    <% } %>
+
+    <% if(post.content === 'video') { %>
+
+        <video width="100%" style="border-radius: 15px;" controls>
+            <source src="<%= post.videoUrl %>">
+        </video>
 
     <% } %>
 
