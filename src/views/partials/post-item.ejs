@@ -7,53 +7,62 @@
         // //hour
         // console.log('hours',Math.floor(timeDifference / 3600000) )
         //months
+        
 
-        const spans = document.querySelectorAll('.post-header-container span');
+        const postSpans = document.querySelectorAll('.post-header-container span');
+        const commentSpans = document.querySelectorAll('.commentContainer span')
+        
+        const arrOfSpans = [postSpans, commentSpans]
+        for (let index = 0; index < arrOfSpans.length; index++) {
+            const element = arrOfSpans[index];
 
-        //go to all spans
-        spans.forEach((span) => {
-            //test if all the spans will change
-            //span.style.color = 'red'
-            //now lets go get the value of each element
-            //span.innerText will not work and will only update the front end when i refresh the page so i have to add a property inside the span called data-timestamp
-            //what it does is it will make data intact for javascript to be process
-            let date = new Date(span.getAttribute('data-timestamp'))
+            //go to all spans
+            element.forEach((span) => {
+                //test if all the spans will change
+                //span.style.color = 'red'
+                //now lets go get the value of each element
+                //span.innerText will not work and will only update the front end when i refresh the page so i have to add a property inside the span called data-timestamp
+                //what it does is it will make data intact for javascript to be process
+                let date = new Date(span.getAttribute('created-at-timestamp')) 
 
-            //this also helps me https://stackoverflow.com/questions/3224834/get-difference-between-2-dates-in-javascript
+                //this also helps me https://stackoverflow.com/questions/3224834/get-difference-between-2-dates-in-javascript
 
-            //so from stack overflow above i can show milisecond, days
-            //i want to output 2s ago and once a minute is reach i will go 1m ago and then if it reach the hour then 1h ago and once month is reach ill go 2mos ago
-            //for a year then ill do 1y ago if it go further 1 year i will just simply output month and date only
+                //so from stack overflow above i can show milisecond, days
+                //i want to output 2s ago and once a minute is reach i will go 1m ago and then if it reach the hour then 1h ago and once month is reach ill go 2mos ago
+                //for a year then ill do 1y ago if it go further 1 year i will just simply output month and date only
 
-            const millisecond = Math.abs(new Date() - date) //new Date is the present object
+                const millisecond = Math.abs(new Date() - date) //new Date is the present object
 
-            //seconds
-            const seconds = millisecond / 1000
-            //minute
-            const minutes = seconds / 60
-            //hour
-            const hour = minutes / 60
-            //days
-            const day = hour / 24
-            //month
-            const month = hour / 730
-            //year
-            const year = month / 12
+                //seconds
+                const seconds = millisecond / 1000
+                //minute
+                const minutes = seconds / 60
+                //hour
+                const hour = minutes / 60
+                //days
+                const day = hour / 24
+                //month
+                const month = hour / 730
+                //year
+                const year = month / 12
 
 
-            if(seconds < 60) span.innerText = `${Math.floor(seconds)}s ago`
-            else if(minutes < 60) span.innerText = `${Math.floor(minutes)}m ago`
-            else if(hour > 1 && hour < 24) span.innerText = `${Math.floor(hour)}h ago`
-            else if (day > 1 && month < 1) span.innerText = `${Math.floor(day)}d ago`
-            else if (month >= 1)  span.innerText = `${Math.floor(month)}mos ago`
-            else if (year > 1 && year < 4) span.innerText = `${Math.floor(year)}y ago`
-            else if (year >= 4) span.innerText = span.innerText = `${date.toLocaleString('en-US', {month: 'short', year: 'numeric' })}`
+                if(seconds < 60) span.innerText = `${Math.floor(seconds)}s ago`
+                else if(minutes < 60) span.innerText = `${Math.floor(minutes)}m ago`
+                else if(hour > 1 && hour < 24) span.innerText = `${Math.floor(hour)}h ago`
+                else if (day > 1 && month < 1) span.innerText = `${Math.floor(day)}d ago`
+                else if (month >= 1)  span.innerText = `${Math.floor(month)}mos ago`
+                else if (year > 1 && year < 4) span.innerText = `${Math.floor(year)}y ago`
+                else if (year >= 4) span.innerText = span.innerText = `${date.toLocaleString('en-US', {month: 'short', year: 'numeric' })}`
+                
+                span.style.visibility = 'visible'
+            })
             
-            span.style.visibility = 'visible'
-        })
+        }
+        
     }
 
-    setInterval(updateTime, 1000) //call every second    
+    setInterval(updateTime,500) //execute every half a second
 </script>
 
 
@@ -70,7 +79,7 @@
                     
                 </div>
             </a>
-            <span style="visibility: hidden;" data-timestamp="<%= post.createdAt %>" ><%= post.createdAt %></span>
+            <span style="visibility: hidden;" created-at-timestamp="<%= post.createdAt %>" ><%= post.createdAt %></span>
         </div>
 
         <div>
@@ -97,19 +106,19 @@
         <!-- show all comments -->
         <% post.comments.forEach( (comment) => { %>
 
-            <div class="commentContainer" style="display: flex;align-items: center;gap: 0.3rem;justify-content: space-between;">
+            <div  style="display: flex;align-items: center;gap: 0.3rem;justify-content: space-between;">
 
 
-                 <div style="display: flex;align-items: center; justify-content: center;gap: 0.3rem;">
+                 <div class="commentContainer" style="display: flex;align-items: center; justify-content: center;gap: 0.3rem;">
                     
-                    <a class="picture-and-name-comment-indicator" href="/users/<%= comment.commenterId._id %>" style="display: flex;align-items: center;">
+                    <a href="/users/<%= comment.commenterId._id %>" style="display: flex;align-items: center;">
                         <img src="<%= comment.commenterId.profile.picture %>" alt="" style="width: 2rem" />
-                        <span style="font-weight: 800;color: rgb(55, 135, 248);"><%= `${comment.commenterId.profile.firstName} ${comment.commenterId.profile.lastName}` %></span>
+                        <p style="font-weight: 800;color: rgb(55, 135, 248);"><%= `${comment.commenterId.profile.firstName} ${comment.commenterId.profile.lastName}` %></p>
                     </a>
 
                     :
                     
-                    &nbsp;&nbsp;<%= comment.commentText %>
+                    &nbsp;&nbsp;<%= comment.commentText %> <span style="visibility: hidden; opacity: 0.6;" created-at-timestamp="<%= comment.createdAt %>"><%= comment.createdAt %></span>
 
 
                  </div>
