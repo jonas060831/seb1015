@@ -15,6 +15,9 @@ Post photos, videos, and code snippets to highlight your projects, insights, and
 
 <img src="https://i.imgur.com/XeeWc4c.png" alt="Alt text" width="400" />
 
+
+<img src="https://i.imgur.com/RODPLdV.png" alt="Alt text" width="400" />
+
 :heart: Stay Connected
 React to and comment on posts to celebrate each other's achievements and ideas.
 
