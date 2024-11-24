@@ -12,9 +12,8 @@ Features
 :star: Show Your Journey
 Post photos, videos, and code snippets to highlight your projects, insights, and milestones.
 
-![Mobile Screenshot](https://i.imgur.com/NvT6jxe.jpeg)
 
-
+<img src="https://i.imgur.com/XeeWc4c.png" alt="Alt text" width="400" />
 
 :heart: Stay Connected
 React to and comment on posts to celebrate each other's achievements and ideas.
