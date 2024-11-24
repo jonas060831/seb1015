@@ -93,6 +93,15 @@
 
     <% } %>
 
+    <% if(post.content === 'code') { %>
+
+        <pre style="margin: 0; padding: 0;text-wrap: nowrap;">
+            <code style="margin: 0;padding: 0;">
+                <%= post.code%>
+            </code>
+        </pre>
+    <% } %>
+
     <hr>
 
     <% if (post.comments.length === 0) { %>

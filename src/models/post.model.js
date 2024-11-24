@@ -9,6 +9,7 @@ const postSchema = new Schema({
     postCreator: { type: Schema.Types.ObjectId, ref: "User", required: true },
     photoUrl: { type: String, required: false },
     videoUrl: { type: String, required: false },
+    code: { type: String, required: false },
     comments: [ 
         { 
             commentText: { type: String, required: true },

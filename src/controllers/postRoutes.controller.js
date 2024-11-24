@@ -19,6 +19,10 @@ const createPost = async (req, res) => {
 
         const result = await Post.create(req.body)
         return res.redirect(`/#${result._id}?success=Posted!`)
+    } else if (content === 'code') {
+
+        const result = await Post.create(req.body)
+        return res.redirect(`/#${result._id}?success=Posted!`) 
     }
 
 
@@ -140,6 +144,7 @@ const postASingleVideo = async (req, res) => {
         res.redirect('/')
     }
 }
+
 
 module.exports = {
     createPost,

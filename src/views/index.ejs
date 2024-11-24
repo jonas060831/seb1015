@@ -7,6 +7,14 @@
     <script src="https://kit.fontawesome.com/5aa5c57aae.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./css/global.css">
     <script defer src="/javascript/global.js"></script>
+
+
+    <!-- for code highlight js below is the default styling-->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css"> -->
+    <!-- this one i got from  all i did was look for what design i liked and copy html and paste here on the header here are the list of code you can use https://www.jsdelivr.com/package/npm/highlight.js?tab=files&path=styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.10.0/styles/atom-one-dark.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
 </head>
 <body>
     <% if(message) { %>
@@ -51,9 +59,7 @@
     
         </div>
     </div>
-    
-
-
+    <script>hljs.highlightAll();</script>
 </body>
 <%- include('./partials/footer') %>
 </html>

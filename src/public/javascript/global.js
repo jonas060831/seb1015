@@ -119,15 +119,22 @@ inputFileVideo.addEventListener('change', async(e) => {
 })
 
 
-
-
+const codeTextArea = document.createElement('textarea')
+codeTextArea.id = 'code-text-area'
+codeTextArea.class = "prism-live"
+codeTextArea.style.height = '15rem'
+codeTextArea.placeholder = "//Paste or write your code here"
+codeTextArea.style.display = 'none'
+codeTextArea.name = 'code'
+const preFormattedCode = document.createElement('pre')
+preFormattedCode.id = 'code-pre-formatted'
+preFormattedCode.class = 'language-javascript' //so we can use prism themes minified version etc we call this in our index.ejs
 
 
 //buttons access
 
 mediaInputRadios.forEach((radioInput) => {
     radioInput.addEventListener('click', (event) => {
-        
         let userSelection = event.target.value
 
         switch (userSelection) {
@@ -140,8 +147,9 @@ mediaInputRadios.forEach((radioInput) => {
                 //doing test
 
                 //this works
-                if(inputFileVideo.style.display !== 'none') mediaContainerDiv.removeChild(inputFileVideo)
-
+                if(inputFileVideo.style.display !== 'none') inputFileVideo.style.display = 'none'
+                if(codeTextArea.style.display !== 'none') codeTextArea.style.display = 'none'
+                if(preFormattedCode.style.display !== 'none') preFormattedCode.style.display = 'none'
 
                 //remove any previous value
                 inputFilePhoto.value = null
@@ -153,7 +161,9 @@ mediaInputRadios.forEach((radioInput) => {
                 //show the video input file
                 inputFileVideo.style.display = 'block'
                 //if there is a value from previous input files
-                if(inputFilePhoto.style.display !== 'none') mediaContainerDiv.removeChild(inputFilePhoto)
+                if(inputFilePhoto.style.display !== 'none') inputFilePhoto.style.display = 'none'
+                if(codeTextArea.style.display !== 'none') codeTextArea.style.display = 'none'
+                if(preFormattedCode.style.display !== 'none') preFormattedCode.style.display = 'none'
 
                 //remove any previous value
                 inputFileVideo.value = null
@@ -162,7 +172,20 @@ mediaInputRadios.forEach((radioInput) => {
 
                 break;
             case 'code':
-                console.log('will do this later')
+                mediaContainerDiv.position = 'relaive'
+                mediaContainerDiv.width = '100%'
+                codeTextArea.style.display = 'block'
+                preFormattedCode.style.display = 'block'
+                //if there is a value from previous input files
+                if(inputFilePhoto.style.display !== 'none') inputFilePhoto.style.display = 'none'
+                if(inputFileVideo.style.display !== 'none') inputFileVideo.style.display = 'none'
+                
+                codeTextArea.value = null
+                preFormattedCode.value = null
+                
+                mediaContainerDiv.append(preFormattedCode)
+                mediaContainerDiv.append(codeTextArea)
+                
                 break;
             default:
                 userSelection.value = "text"
