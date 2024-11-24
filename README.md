@@ -89,5 +89,5 @@ seb1015 is dedicated to every member of Class 1015 who has worked hard, supporte
 Contact
 Have ideas or suggestions? Let’s connect!
 
-![Github]: (https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=whit) (https://github.com/jonas060831)
+![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)
 [Email Me]: (mailto:jonas@sulitfoundation.com)
