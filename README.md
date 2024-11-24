@@ -1,4 +1,4 @@
-seb1015 :sparkles:
+# seb1015 :sparkles:
 
 
 
@@ -11,6 +11,10 @@ Features
 
 :star: Show Your Journey
 Post photos, videos, and code snippets to highlight your projects, insights, and milestones.
+
+![Mobile Screenshot](https://imgur.com/a/XTsh10A)
+
+
 
 :heart: Stay Connected
 React to and comment on posts to celebrate each other's achievements and ideas.
