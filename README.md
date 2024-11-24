@@ -12,7 +12,7 @@ Features
 :star: Show Your Journey
 Post photos, videos, and code snippets to highlight your projects, insights, and milestones.
 
-![Mobile Screenshot](https://imgur.com/a/XTsh10A)
+![Mobile Screenshot](https://i.imgur.com/NvT6jxe.jpeg)
 
 
 
