@@ -37,12 +37,18 @@ Node.js (v18.x or later)
 Git
 Installation
 Clone the Repository:
-git clone https://github.com/your-repo/seb1015.git  
-cd seb1015  
+```
+git clone git@github.com:jonas060831/seb1015.git
+cd seb1015
+```  
 Install Dependencies:
-npm install  
+```
+npm install
+```  
 Run the App:
+```
 npm start  
+```
 Access the app at http://localhost:3000.
 Contribution Guidelines
 
@@ -51,11 +57,18 @@ As of now, contributions are open exclusively to Class 1015 members. Let's make 
 Steps to Contribute:
 Fork the repository.
 Create a new branch:
-git checkout -b feature-branch-name  
+
+```
+git checkout -b feature-branch-name
+```
 Commit your changes:
+```
 git commit -m "Add your feature description"  
+```
 Push your branch:
+```
 git push origin feature-branch-name  
+```
 Open a pull request.
 Check the CONTRIBUTING.md for detailed guidelines.
 
@@ -76,5 +89,5 @@ seb1015 is dedicated to every member of Class 1015 who has worked hard, supporte
 Contact
 Have ideas or suggestions? Let’s connect!
 
-![Github] (https://github.com/jonas060831)
+![https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=whit](https://github.com/jonas060831)
 [Email Me]: (mailto:jonas@sulitfoundation.com)
