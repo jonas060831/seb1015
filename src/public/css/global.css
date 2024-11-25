@@ -339,6 +339,13 @@ textarea {
 }
 
 
+.button, .regular {
+    background-color: var(--navbar-background-color) !important;
+    border-radius: 10px;
+
+}
+
+
 footer {
     display: flex;
     gap: 2rem;
