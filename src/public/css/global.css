@@ -301,6 +301,23 @@ input[type=submit]:hover {
     border-radius: 10px;
 }
 
+.memoji-img-container {
+    display: flex;
+    gap: 0.2rem;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+
+}
+
+.memoji-img-container li{
+    list-style-type: none;
+}
+
+.memoji-img-container img {
+    width: 10rem;
+}
+
 /* https://www.w3schools.com/howto/howto_css_disable_resize_textarea.asp */
 textarea {
     background: none;

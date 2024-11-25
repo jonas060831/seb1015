@@ -60,23 +60,6 @@ Contribution Guidelines
 
 As of now, contributions are open exclusively to Class 1015 members. Let's make seb1015 our collective masterpiece!
 
-Steps to Contribute:
-Fork the repository.
-Create a new branch:
-
-```
-git checkout -b feature-branch-name
-```
-Commit your changes:
-```
-git commit -m "Add your feature description"  
-```
-Push your branch:
-```
-git push origin feature-branch-name  
-```
-Open a pull request.
-Check the CONTRIBUTING.md for detailed guidelines.
 
 Recognized Contributors
 

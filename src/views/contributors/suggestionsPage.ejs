@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contributors Suggestion Page</title>
+    <script src="https://kit.fontawesome.com/5aa5c57aae.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="../css/global.css">
+    <script defer src="/javascript/global.js"></script>
+
+</head>
+<body>
+    <%- include('../partials/navbar') %>
+    
+
+    <div class="wrapper">
+        <h1>Contributors Suggestion Page!</h1>
+
+        <div class="future-contributors-images">
+
+            <ul class="memoji-img-container" >
+                <% possibleContributors.forEach(contributorImage => { %>
+                    <li >
+                        <img  src="<%= contributorImage%>" alt="" />
+                    </li>
+                <% }) %>
+            </ul>
+
+        </div>
+
+        <form action="/contributors/suggestion" method="POST">
+            <!-- https://www.w3schools.com/tags/tag_select.asp -->
+            <label for="topic">Topic</label>
+            <select name="topic" id="topic">
+                <option value="Feature Improvements">Feature Improvements</option>
+                <option value="Backend Optimizations">Backend Optimizations</option>
+                <option value="Frontend Enhancements">Frontend Enhancements</option>
+                <option value="Bug Reports">Bug Reports</option>
+                <option value="API Integrations">API Integrations</option>
+                <option value="Testing Improvements">Testing Improvements</option>
+            </select>
+
+            <label for="title">Title</label>
+            <input type="text" name="title" id="title"/>
+            
+            <label for="description">Description</label>
+            <textarea name="description" id="description"></textarea>
+
+            <label for="impactLevel">Impact Level</label>
+            <select name="impactLevel" id="impactLevel">
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+            </select>
+
+            <label for="difficultyLevel">Difficulty Level</label>
+            <textarea name="difficultyLevel"></textarea>
+
+            <label for="contributorNotes">Contributor Notes</label>
+            <textarea name="contributorNotes"></textarea>
+
+            <input type="submit">
+        </form>
+
+        <br><br><br>
+        <h1>After submitting a suggestion and getting an status approved do below: </h1>
+        <pre>
+            <code>
+                #clone it
+                git clone git@github.com:jonas060831/seb1015.git
+                #dont forget
+                cd seb1015
+                #npm install
+                #set up your ENV variables to test out the project there are 4 required env variables as of now
+                MONGODB_URI= yes in get this from your atlas
+                SESSION_SECRET= YOU CHOSE
+                PHOTOS_FOLDER= YOU CHOSE
+                VIDEOS_FOLDER= YOU CHOSE
+                #start the application
+                npm start
+                #then you can access it on your CHROME BROWSER
+                #As of now, contributions are open exclusively to Class 1015 members. Let's make seb1015 our collective masterpiece!
+                #Steps to Contribute: Fork the repository. Create a new branch:
+                git checkout -b feature-branch-name
+                #Commit your changes:
+                git commit -m "Add your feature description" 
+                #Push your branch:
+                git push origin feature-branch-name  
+                #Open a pull request. Check the CONTRIBUTING.md for detailed guidelines.
+
+                #Recognized Contributors
+                
+                #Each contributor's GitHub profile will be proudly displayed on our Contributors Page. Be a part of something meaningful and leave your mark on seb1015!
+
+            </code>
+        </pre>
+    </div>
+    
+</body>
+<%- include('../partials/footer') %>
+</html>
