@@ -14,33 +14,54 @@
 
 
     <div class="wrapper">
-        <h1>My Profile</h1>
+        
+        <div style="display: flex;flex-direction: column;justify-content: center;align-items: center;">
+            <h1>My Profile</h1>
 
-        <img src="<%= user.profile.picture %>" />
-    
-        <h4>member since:</h4>
-        <%= user.stringCreatedAt %>
-    
-        <h4>Credentials:</h4>
-        username: <%= user.local.username %> <br>
-        password: • • • • • • • •
-    
-        <h4>Profile</h4>
-        <form action="/users/edit/profile?_method=PUT" method="POST">
+            <img src="<%= user.profile.picture %>" style="width: 10rem"/>
+        
+            <h4>member since:</h4> <br>
+            <%= user.stringCreatedAt %>
             
-            <label for="firstName">First Name:</label>
-            <input type="text" name="firstName" value="<%= user.profile.firstName %>" />
-    
-            <label for="lastName">Last Name:</label>
-            <input type="text" name="lastName" value="<%= user.profile.lastName %>" />
-    
-            <label for="aboutMe">About Me:</label>
-            <textarea name="aboutMe" ><%= user.profile.aboutMe%></textarea>
-    
-            <input type="submit" value="Update"/>
-        </form>
-    
-        <a href="/sign-out"> <i class="fa-solid fa-power-off"></i> Sign Out</a>
+            <br><br><br>
+            <h4>Credentials:</h4>
+            <br>
+            username: <%= user.local.username %> <br>
+            password: • • • • • • • •
+            
+
+            <br><br><br>
+            <h4>Profile</h4>
+            <br>
+            <form action="/users/edit/profile?_method=PUT" method="POST">
+                
+                <div style="display: flex; flex-direction: column;gap: 2rem;">
+                    
+                    <div>
+                        <label for="firstName">First Name:</label> <br>
+                        <input type="text" name="firstName" value="<%= user.profile.firstName %>" />
+                    </div>
+            
+                    <div>
+                        <label for="lastName">Last Name:</label> <br>
+                        <input type="text" name="lastName" value="<%= user.profile.lastName %>" />
+                    </div>
+            
+                    <div>
+                        <label for="aboutMe">About Me:</label> <br>
+                        <textarea name="aboutMe" style="border-radius: 5px;"><%= user.profile.aboutMe%></textarea>
+                    </div>
+            
+                    <input type="submit" value="Update"/>
+                </div>
+            </form>
+            <br><br><br><br><br>
+            
+            
+            👀
+            <br> <br>
+            <a href="/sign-out"> <i class="fa-solid fa-power-off"></i> Sign Out</a>
+        </div>
     </div>
     
 
