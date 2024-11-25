@@ -2,8 +2,6 @@
 
 
 
-
-
 seb1015 is more than just an app—it's a heartfelt tribute to the incredible journey of Class 1015. It's a space to showcase your growth, collaborate with peers, and celebrate our shared passion for software development.
 
 "Together, we've faced challenges, shared triumphs, and learned so much. seb1015 is our way to keep building, growing, and inspiring each other—even beyond the classroom."  
